@@ -1,0 +1,477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BBC01ED11925EE2B00AB2423 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC01ED01925EE2B00AB2423 /* Foundation.framework */; };
+		BBC01ED31925EE2B00AB2423 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC01ED21925EE2B00AB2423 /* CoreGraphics.framework */; };
+		BBC01ED51925EE2B00AB2423 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC01ED41925EE2B00AB2423 /* UIKit.framework */; };
+		BBC01ED71925EE2B00AB2423 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC01ED61925EE2B00AB2423 /* CoreData.framework */; };
+		BBC01EDD1925EE2B00AB2423 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBC01EDB1925EE2B00AB2423 /* InfoPlist.strings */; };
+		BBC01EDF1925EE2B00AB2423 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC01EDE1925EE2B00AB2423 /* main.m */; };
+		BBC01EE31925EE2B00AB2423 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC01EE21925EE2B00AB2423 /* AppDelegate.m */; };
+		BBC01EE61925EE2B00AB2423 /* Events4Vets.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBC01EE41925EE2B00AB2423 /* Events4Vets.xcdatamodeld */; };
+		BBC01EE81925EE2B00AB2423 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBC01EE71925EE2B00AB2423 /* Images.xcassets */; };
+		BBC01EEF1925EE2B00AB2423 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC01EEE1925EE2B00AB2423 /* XCTest.framework */; };
+		BBC01EF01925EE2B00AB2423 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC01ED01925EE2B00AB2423 /* Foundation.framework */; };
+		BBC01EF11925EE2B00AB2423 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC01ED41925EE2B00AB2423 /* UIKit.framework */; };
+		BBC01EF21925EE2B00AB2423 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC01ED61925EE2B00AB2423 /* CoreData.framework */; };
+		BBC01EFA1925EE2B00AB2423 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBC01EF81925EE2B00AB2423 /* InfoPlist.strings */; };
+		BBC01EFC1925EE2B00AB2423 /* Events4VetsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC01EFB1925EE2B00AB2423 /* Events4VetsTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BBC01EF31925EE2B00AB2423 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BBC01EC51925EE2B00AB2423 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BBC01ECC1925EE2B00AB2423;
+			remoteInfo = Events4Vets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BBC01ECD1925EE2B00AB2423 /* Events4Vets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Events4Vets.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBC01ED01925EE2B00AB2423 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BBC01ED21925EE2B00AB2423 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BBC01ED41925EE2B00AB2423 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BBC01ED61925EE2B00AB2423 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BBC01EDA1925EE2B00AB2423 /* Events4Vets-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Events4Vets-Info.plist"; sourceTree = "<group>"; };
+		BBC01EDC1925EE2B00AB2423 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BBC01EDE1925EE2B00AB2423 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BBC01EE01925EE2B00AB2423 /* Events4Vets-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Events4Vets-Prefix.pch"; sourceTree = "<group>"; };
+		BBC01EE11925EE2B00AB2423 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BBC01EE21925EE2B00AB2423 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BBC01EE51925EE2B00AB2423 /* Events4Vets.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Events4Vets.xcdatamodel; sourceTree = "<group>"; };
+		BBC01EE71925EE2B00AB2423 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BBC01EED1925EE2B00AB2423 /* Events4VetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Events4VetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBC01EEE1925EE2B00AB2423 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BBC01EF71925EE2B00AB2423 /* Events4VetsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Events4VetsTests-Info.plist"; sourceTree = "<group>"; };
+		BBC01EF91925EE2B00AB2423 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BBC01EFB1925EE2B00AB2423 /* Events4VetsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Events4VetsTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BBC01ECA1925EE2B00AB2423 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBC01ED31925EE2B00AB2423 /* CoreGraphics.framework in Frameworks */,
+				BBC01ED71925EE2B00AB2423 /* CoreData.framework in Frameworks */,
+				BBC01ED51925EE2B00AB2423 /* UIKit.framework in Frameworks */,
+				BBC01ED11925EE2B00AB2423 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBC01EEA1925EE2B00AB2423 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBC01EEF1925EE2B00AB2423 /* XCTest.framework in Frameworks */,
+				BBC01EF21925EE2B00AB2423 /* CoreData.framework in Frameworks */,
+				BBC01EF11925EE2B00AB2423 /* UIKit.framework in Frameworks */,
+				BBC01EF01925EE2B00AB2423 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BBC01EC41925EE2B00AB2423 = {
+			isa = PBXGroup;
+			children = (
+				BBC01ED81925EE2B00AB2423 /* Events4Vets */,
+				BBC01EF51925EE2B00AB2423 /* Events4VetsTests */,
+				BBC01ECF1925EE2B00AB2423 /* Frameworks */,
+				BBC01ECE1925EE2B00AB2423 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BBC01ECE1925EE2B00AB2423 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BBC01ECD1925EE2B00AB2423 /* Events4Vets.app */,
+				BBC01EED1925EE2B00AB2423 /* Events4VetsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBC01ECF1925EE2B00AB2423 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBC01ED01925EE2B00AB2423 /* Foundation.framework */,
+				BBC01ED21925EE2B00AB2423 /* CoreGraphics.framework */,
+				BBC01ED41925EE2B00AB2423 /* UIKit.framework */,
+				BBC01ED61925EE2B00AB2423 /* CoreData.framework */,
+				BBC01EEE1925EE2B00AB2423 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BBC01ED81925EE2B00AB2423 /* Events4Vets */ = {
+			isa = PBXGroup;
+			children = (
+				BBC01EE11925EE2B00AB2423 /* AppDelegate.h */,
+				BBC01EE21925EE2B00AB2423 /* AppDelegate.m */,
+				BBC01EE71925EE2B00AB2423 /* Images.xcassets */,
+				BBC01EE41925EE2B00AB2423 /* Events4Vets.xcdatamodeld */,
+				BBC01ED91925EE2B00AB2423 /* Supporting Files */,
+			);
+			path = Events4Vets;
+			sourceTree = "<group>";
+		};
+		BBC01ED91925EE2B00AB2423 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BBC01EDA1925EE2B00AB2423 /* Events4Vets-Info.plist */,
+				BBC01EDB1925EE2B00AB2423 /* InfoPlist.strings */,
+				BBC01EDE1925EE2B00AB2423 /* main.m */,
+				BBC01EE01925EE2B00AB2423 /* Events4Vets-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BBC01EF51925EE2B00AB2423 /* Events4VetsTests */ = {
+			isa = PBXGroup;
+			children = (
+				BBC01EFB1925EE2B00AB2423 /* Events4VetsTests.m */,
+				BBC01EF61925EE2B00AB2423 /* Supporting Files */,
+			);
+			path = Events4VetsTests;
+			sourceTree = "<group>";
+		};
+		BBC01EF61925EE2B00AB2423 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BBC01EF71925EE2B00AB2423 /* Events4VetsTests-Info.plist */,
+				BBC01EF81925EE2B00AB2423 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BBC01ECC1925EE2B00AB2423 /* Events4Vets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBC01EFF1925EE2B00AB2423 /* Build configuration list for PBXNativeTarget "Events4Vets" */;
+			buildPhases = (
+				BBC01EC91925EE2B00AB2423 /* Sources */,
+				BBC01ECA1925EE2B00AB2423 /* Frameworks */,
+				BBC01ECB1925EE2B00AB2423 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Events4Vets;
+			productName = Events4Vets;
+			productReference = BBC01ECD1925EE2B00AB2423 /* Events4Vets.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BBC01EEC1925EE2B00AB2423 /* Events4VetsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBC01F021925EE2B00AB2423 /* Build configuration list for PBXNativeTarget "Events4VetsTests" */;
+			buildPhases = (
+				BBC01EE91925EE2B00AB2423 /* Sources */,
+				BBC01EEA1925EE2B00AB2423 /* Frameworks */,
+				BBC01EEB1925EE2B00AB2423 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BBC01EF41925EE2B00AB2423 /* PBXTargetDependency */,
+			);
+			name = Events4VetsTests;
+			productName = Events4VetsTests;
+			productReference = BBC01EED1925EE2B00AB2423 /* Events4VetsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BBC01EC51925EE2B00AB2423 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "David Norman";
+				TargetAttributes = {
+					BBC01EEC1925EE2B00AB2423 = {
+						TestTargetID = BBC01ECC1925EE2B00AB2423;
+					};
+				};
+			};
+			buildConfigurationList = BBC01EC81925EE2B00AB2423 /* Build configuration list for PBXProject "Events4Vets" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BBC01EC41925EE2B00AB2423;
+			productRefGroup = BBC01ECE1925EE2B00AB2423 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BBC01ECC1925EE2B00AB2423 /* Events4Vets */,
+				BBC01EEC1925EE2B00AB2423 /* Events4VetsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BBC01ECB1925EE2B00AB2423 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBC01EDD1925EE2B00AB2423 /* InfoPlist.strings in Resources */,
+				BBC01EE81925EE2B00AB2423 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBC01EEB1925EE2B00AB2423 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBC01EFA1925EE2B00AB2423 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BBC01EC91925EE2B00AB2423 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBC01EE31925EE2B00AB2423 /* AppDelegate.m in Sources */,
+				BBC01EE61925EE2B00AB2423 /* Events4Vets.xcdatamodeld in Sources */,
+				BBC01EDF1925EE2B00AB2423 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBC01EE91925EE2B00AB2423 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBC01EFC1925EE2B00AB2423 /* Events4VetsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BBC01EF41925EE2B00AB2423 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BBC01ECC1925EE2B00AB2423 /* Events4Vets */;
+			targetProxy = BBC01EF31925EE2B00AB2423 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BBC01EDB1925EE2B00AB2423 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BBC01EDC1925EE2B00AB2423 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BBC01EF81925EE2B00AB2423 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BBC01EF91925EE2B00AB2423 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BBC01EFD1925EE2B00AB2423 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BBC01EFE1925EE2B00AB2423 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BBC01F001925EE2B00AB2423 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Events4Vets/Events4Vets-Prefix.pch";
+				INFOPLIST_FILE = "Events4Vets/Events4Vets-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BBC01F011925EE2B00AB2423 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Events4Vets/Events4Vets-Prefix.pch";
+				INFOPLIST_FILE = "Events4Vets/Events4Vets-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BBC01F031925EE2B00AB2423 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Events4Vets.app/Events4Vets";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Events4Vets/Events4Vets-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Events4VetsTests/Events4VetsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BBC01F041925EE2B00AB2423 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Events4Vets.app/Events4Vets";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Events4Vets/Events4Vets-Prefix.pch";
+				INFOPLIST_FILE = "Events4VetsTests/Events4VetsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BBC01EC81925EE2B00AB2423 /* Build configuration list for PBXProject "Events4Vets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBC01EFD1925EE2B00AB2423 /* Debug */,
+				BBC01EFE1925EE2B00AB2423 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BBC01EFF1925EE2B00AB2423 /* Build configuration list for PBXNativeTarget "Events4Vets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBC01F001925EE2B00AB2423 /* Debug */,
+				BBC01F011925EE2B00AB2423 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BBC01F021925EE2B00AB2423 /* Build configuration list for PBXNativeTarget "Events4VetsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBC01F031925EE2B00AB2423 /* Debug */,
+				BBC01F041925EE2B00AB2423 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BBC01EE41925EE2B00AB2423 /* Events4Vets.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BBC01EE51925EE2B00AB2423 /* Events4Vets.xcdatamodel */,
+			);
+			currentVersion = BBC01EE51925EE2B00AB2423 /* Events4Vets.xcdatamodel */;
+			path = Events4Vets.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = BBC01EC51925EE2B00AB2423 /* Project object */;
+}
