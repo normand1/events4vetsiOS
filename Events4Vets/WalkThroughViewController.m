@@ -45,6 +45,8 @@ static NSString * const sampleDesc5 = @"Sed rhoncus arcu nisl, in ultrices mi eg
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.navigationController.navigationBar.barStyle=UIBarStyleBlackTranslucent;
+    
     self.ghView.isfixedBackground = NO;
     
     self.navigationController.navigationBarHidden = YES;
@@ -138,6 +140,10 @@ static NSString * const sampleDesc5 = @"Sed rhoncus arcu nisl, in ultrices mi eg
         
         // Present the log in view controller
         [self presentViewController:logInViewController animated:YES completion:NULL];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"pushMain" sender:self];
     }
     
 }

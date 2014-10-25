@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EventItem.h"
+#import "SWTableViewCell.h"
 
-@interface MainTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MainTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, SWTableViewCellDelegate>
 
 {
     NSArray *returnedEventsArray;
+    NSMutableArray *mutableEventsArray;
+    EventItem *eventItemToPass;
+    
 }
 
 @end

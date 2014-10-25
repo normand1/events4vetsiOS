@@ -11,6 +11,19 @@
 		BB0B3BD61926EBA1008D1C61 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0B3BD51926EBA1008D1C61 /* Main_iPad.storyboard */; };
 		BB0B3BD81926EC28008D1C61 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0B3BD71926EC28008D1C61 /* Parse.framework */; };
 		BB0B3BDA1926EC4A008D1C61 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0B3BD91926EC4A008D1C61 /* FacebookSDK.framework */; };
+		BB300BF51931C453001D165D /* EventItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BB300BF41931C453001D165D /* EventItem.m */; };
+		BB300BF819324FBD001D165D /* EventDetailWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB300BF719324FBD001D165D /* EventDetailWebViewController.m */; };
+		BB300C0619326359001D165D /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = BB300BFB19326359001D165D /* NSMutableArray+SWUtilityButtons.m */; };
+		BB300C0719326359001D165D /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB300BFD19326359001D165D /* SWCellScrollView.m */; };
+		BB300C0819326359001D165D /* SWLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB300BFF19326359001D165D /* SWLongPressGestureRecognizer.m */; };
+		BB300C0919326359001D165D /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB300C0119326359001D165D /* SWTableViewCell.m */; };
+		BB300C0A19326359001D165D /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB300C0319326359001D165D /* SWUtilityButtonTapGestureRecognizer.m */; };
+		BB300C0B19326359001D165D /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB300C0519326359001D165D /* SWUtilityButtonView.m */; };
+		BB300C1019326364001D165D /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB300C0C19326364001D165D /* check@2x.png */; };
+		BB300C1119326364001D165D /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB300C0D19326364001D165D /* clock@2x.png */; };
+		BB300C1219326364001D165D /* cross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB300C0E19326364001D165D /* cross@2x.png */; };
+		BB300C1319326364001D165D /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB300C0F19326364001D165D /* list@2x.png */; };
+		BB300C16193263B5001D165D /* EventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB300C15193263B5001D165D /* EventsTableViewCell.m */; };
 		BB7C9885192C6C4100F0B877 /* GHWalkThroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7C9882192C6C4100F0B877 /* GHWalkThroughView.m */; };
 		BB7C9886192C6C4100F0B877 /* GHWalkThroughPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7C9884192C6C4100F0B877 /* GHWalkThroughPageCell.m */; };
 		BB7C988A192C6CB800F0B877 /* WalkThroughViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7C9889192C6CB800F0B877 /* WalkThroughViewController.m */; };
@@ -36,6 +49,7 @@
 		BB7C99B9192DC4BF00F0B877 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7C99AE192DC4BF00F0B877 /* AFURLRequestSerialization.m */; };
 		BB7C99BA192DC4BF00F0B877 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7C99B0192DC4BF00F0B877 /* AFURLResponseSerialization.m */; };
 		BB7C99BB192DC4BF00F0B877 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7C99B2192DC4BF00F0B877 /* AFURLSessionManager.m */; };
+		BBBA2C2B192EEDAC00794F06 /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBBA2C2A192EEDAC00794F06 /* MainTableViewCell.m */; };
 		BBC01ED11925EE2B00AB2423 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC01ED01925EE2B00AB2423 /* Foundation.framework */; };
 		BBC01ED31925EE2B00AB2423 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC01ED21925EE2B00AB2423 /* CoreGraphics.framework */; };
 		BBC01ED51925EE2B00AB2423 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC01ED41925EE2B00AB2423 /* UIKit.framework */; };
@@ -81,6 +95,28 @@
 		BB0B3BD51926EBA1008D1C61 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		BB0B3BD71926EC28008D1C61 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		BB0B3BD91926EC4A008D1C61 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		BB300BF31931C453001D165D /* EventItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventItem.h; sourceTree = "<group>"; };
+		BB300BF41931C453001D165D /* EventItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventItem.m; sourceTree = "<group>"; };
+		BB300BF619324FBD001D165D /* EventDetailWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailWebViewController.h; sourceTree = "<group>"; };
+		BB300BF719324FBD001D165D /* EventDetailWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailWebViewController.m; sourceTree = "<group>"; };
+		BB300BFA19326359001D165D /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
+		BB300BFB19326359001D165D /* NSMutableArray+SWUtilityButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SWUtilityButtons.m"; sourceTree = "<group>"; };
+		BB300BFC19326359001D165D /* SWCellScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWCellScrollView.h; sourceTree = "<group>"; };
+		BB300BFD19326359001D165D /* SWCellScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWCellScrollView.m; sourceTree = "<group>"; };
+		BB300BFE19326359001D165D /* SWLongPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWLongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		BB300BFF19326359001D165D /* SWLongPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWLongPressGestureRecognizer.m; sourceTree = "<group>"; };
+		BB300C0019326359001D165D /* SWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWTableViewCell.h; sourceTree = "<group>"; };
+		BB300C0119326359001D165D /* SWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewCell.m; sourceTree = "<group>"; };
+		BB300C0219326359001D165D /* SWUtilityButtonTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonTapGestureRecognizer.h; sourceTree = "<group>"; };
+		BB300C0319326359001D165D /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
+		BB300C0419326359001D165D /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonView.h; sourceTree = "<group>"; };
+		BB300C0519326359001D165D /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
+		BB300C0C19326364001D165D /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
+		BB300C0D19326364001D165D /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
+		BB300C0E19326364001D165D /* cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross@2x.png"; sourceTree = "<group>"; };
+		BB300C0F19326364001D165D /* list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@2x.png"; sourceTree = "<group>"; };
+		BB300C14193263B5001D165D /* EventsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsTableViewCell.h; sourceTree = "<group>"; };
+		BB300C15193263B5001D165D /* EventsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsTableViewCell.m; sourceTree = "<group>"; };
 		BB7C9881192C6C4100F0B877 /* GHWalkThroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHWalkThroughView.h; sourceTree = "<group>"; };
 		BB7C9882192C6C4100F0B877 /* GHWalkThroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHWalkThroughView.m; sourceTree = "<group>"; };
 		BB7C9883192C6C4100F0B877 /* GHWalkThroughPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHWalkThroughPageCell.h; sourceTree = "<group>"; };
@@ -120,6 +156,8 @@
 		BB7C99B0192DC4BF00F0B877 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		BB7C99B1192DC4BF00F0B877 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		BB7C99B2192DC4BF00F0B877 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		BBBA2C29192EEDAC00794F06 /* MainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTableViewCell.h; path = ../MainTableViewCell.h; sourceTree = "<group>"; };
+		BBBA2C2A192EEDAC00794F06 /* MainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTableViewCell.m; path = ../MainTableViewCell.m; sourceTree = "<group>"; };
 		BBC01ECD1925EE2B00AB2423 /* Events4Vets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Events4Vets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC01ED01925EE2B00AB2423 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BBC01ED21925EE2B00AB2423 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -194,9 +232,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB300BF919326339001D165D /* SWTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				BB300BFA19326359001D165D /* NSMutableArray+SWUtilityButtons.h */,
+				BB300BFB19326359001D165D /* NSMutableArray+SWUtilityButtons.m */,
+				BB300BFC19326359001D165D /* SWCellScrollView.h */,
+				BB300BFD19326359001D165D /* SWCellScrollView.m */,
+				BB300BFE19326359001D165D /* SWLongPressGestureRecognizer.h */,
+				BB300BFF19326359001D165D /* SWLongPressGestureRecognizer.m */,
+				BB300C0019326359001D165D /* SWTableViewCell.h */,
+				BB300C0119326359001D165D /* SWTableViewCell.m */,
+				BB300C0219326359001D165D /* SWUtilityButtonTapGestureRecognizer.h */,
+				BB300C0319326359001D165D /* SWUtilityButtonTapGestureRecognizer.m */,
+				BB300C0419326359001D165D /* SWUtilityButtonView.h */,
+				BB300C0519326359001D165D /* SWUtilityButtonView.m */,
+				BB300C0C19326364001D165D /* check@2x.png */,
+				BB300C0D19326364001D165D /* clock@2x.png */,
+				BB300C0E19326364001D165D /* cross@2x.png */,
+				BB300C0F19326364001D165D /* list@2x.png */,
+			);
+			name = SWTableViewCell;
+			sourceTree = "<group>";
+		};
 		BB7C9880192C6BCF00F0B877 /* External Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				BB300BF919326339001D165D /* SWTableViewCell */,
 				BB7C999F192DC4BF00F0B877 /* AFNetworking */,
 				BB7C9887192C6C4B00F0B877 /* GHWalkThrough */,
 			);
@@ -319,8 +381,16 @@
 				BBC01ED91925EE2B00AB2423 /* Supporting Files */,
 				BB7C9888192C6CB800F0B877 /* WalkThroughViewController.h */,
 				BB7C9889192C6CB800F0B877 /* WalkThroughViewController.m */,
+				BB300BF31931C453001D165D /* EventItem.h */,
+				BB300BF41931C453001D165D /* EventItem.m */,
 				BB7C98AB192DBF6D00F0B877 /* MainTableViewController.h */,
 				BB7C98AC192DBF6D00F0B877 /* MainTableViewController.m */,
+				BB300BF619324FBD001D165D /* EventDetailWebViewController.h */,
+				BB300BF719324FBD001D165D /* EventDetailWebViewController.m */,
+				BB300C14193263B5001D165D /* EventsTableViewCell.h */,
+				BB300C15193263B5001D165D /* EventsTableViewCell.m */,
+				BBBA2C29192EEDAC00794F06 /* MainTableViewCell.h */,
+				BBBA2C2A192EEDAC00794F06 /* MainTableViewCell.m */,
 			);
 			path = Events4Vets;
 			sourceTree = "<group>";
@@ -443,7 +513,11 @@
 				BB0B3BD41926EB8C008D1C61 /* Main_iPhone.storyboard in Resources */,
 				BB7C9898192C6DE100F0B877 /* title5@2x.png in Resources */,
 				BB7C989A192C6DE100F0B877 /* title2@2x.png in Resources */,
+				BB300C1019326364001D165D /* check@2x.png in Resources */,
 				BB7C9899192C6DE100F0B877 /* title1@2x.png in Resources */,
+				BB300C1119326364001D165D /* clock@2x.png in Resources */,
+				BB300C1319326364001D165D /* list@2x.png in Resources */,
+				BB300C1219326364001D165D /* cross@2x.png in Resources */,
 				BB7C98AA192DBB0500F0B877 /* splash_screen.png in Resources */,
 				BB7C989D192C6DE100F0B877 /* bg_05.jpg in Resources */,
 			);
@@ -465,20 +539,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB7C99B8192DC4BF00F0B877 /* AFURLConnectionOperation.m in Sources */,
+				BB300BF51931C453001D165D /* EventItem.m in Sources */,
 				BB7C9885192C6C4100F0B877 /* GHWalkThroughView.m in Sources */,
+				BB300BF819324FBD001D165D /* EventDetailWebViewController.m in Sources */,
 				BBC01EE31925EE2B00AB2423 /* AppDelegate.m in Sources */,
 				BB7C98AD192DBF6D00F0B877 /* MainTableViewController.m in Sources */,
+				BB300C0919326359001D165D /* SWTableViewCell.m in Sources */,
+				BB300C0B19326359001D165D /* SWUtilityButtonView.m in Sources */,
+				BB300C0619326359001D165D /* NSMutableArray+SWUtilityButtons.m in Sources */,
+				BB300C0819326359001D165D /* SWLongPressGestureRecognizer.m in Sources */,
 				BB7C99BA192DC4BF00F0B877 /* AFURLResponseSerialization.m in Sources */,
 				BBC01EE61925EE2B00AB2423 /* Events4Vets.xcdatamodeld in Sources */,
 				BB7C99B9192DC4BF00F0B877 /* AFURLRequestSerialization.m in Sources */,
 				BB7C99B7192DC4BF00F0B877 /* AFSecurityPolicy.m in Sources */,
 				BB7C99B3192DC4BF00F0B877 /* AFHTTPRequestOperation.m in Sources */,
+				BB300C0719326359001D165D /* SWCellScrollView.m in Sources */,
 				BB7C99BB192DC4BF00F0B877 /* AFURLSessionManager.m in Sources */,
+				BBBA2C2B192EEDAC00794F06 /* MainTableViewCell.m in Sources */,
 				BB7C988A192C6CB800F0B877 /* WalkThroughViewController.m in Sources */,
 				BB7C9886192C6C4100F0B877 /* GHWalkThroughPageCell.m in Sources */,
+				BB300C16193263B5001D165D /* EventsTableViewCell.m in Sources */,
 				BB7C99B5192DC4BF00F0B877 /* AFHTTPSessionManager.m in Sources */,
 				BBC01EDF1925EE2B00AB2423 /* main.m in Sources */,
 				BB7C99B6192DC4BF00F0B877 /* AFNetworkReachabilityManager.m in Sources */,
+				BB300C0A19326359001D165D /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				BB7C99B4192DC4BF00F0B877 /* AFHTTPRequestOperationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
