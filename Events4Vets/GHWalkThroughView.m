@@ -40,6 +40,9 @@
     _bgFrontLayer = [[UIImageView alloc] initWithFrame:self.frame];
     _bgBackLayer = [[UIImageView alloc] initWithFrame:self.frame];
     
+    _bgFrontLayer.contentMode = UIViewContentModeScaleAspectFill;
+    _bgBackLayer.contentMode = UIViewContentModeScaleAspectFill;
+    
     UIView* bgView = [[UIView alloc] initWithFrame:self.frame];
     [bgView addSubview:_bgBackLayer];
     [bgView addSubview:_bgFrontLayer];

@@ -7,11 +7,16 @@
 //
 
 #import "SWTableViewCell.h"
+#import "EventItem.h"
 
 @interface EventsTableViewCell : SWTableViewCell
+
+
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
+@property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (strong, nonatomic) EventItem *item;
 
 @end

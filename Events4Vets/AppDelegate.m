@@ -30,20 +30,13 @@
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
     
     UIStoryboard *storyboard;
-    
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        storyboard = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
-    }
-    else {
-        storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-    }
-    
+
+    storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];    
     
     UINavigationController *vc = [storyboard instantiateInitialViewController];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor blackColor];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
     return YES;

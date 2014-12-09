@@ -7,12 +7,10 @@
 //
 
 #import "MainTableViewController.h"
-#import "AFHTTPRequestOperation.h"
-#import "AFHTTPRequestOperationManager.h"
 #import "EventItem.h"
 #import "EventDetailWebViewController.h"
 #import "EventsTableViewCell.h"
-
+#import "UIColor+E4VColors.h"
 
 @interface MainTableViewController ()
 
@@ -33,14 +31,14 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-     self.clearsSelectionOnViewWillAppear = YES;
-    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.clearsSelectionOnViewWillAppear = YES;
     self.navigationController.navigationBarHidden = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Getting Events";
+
+
     [self getEventsFromServer];
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
@@ -48,10 +46,14 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
+    
 
 }
 
-
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [PFUser logOut];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -79,22 +81,15 @@
     static NSString *CellIdentifier = @"MainCellIdentifier";
     
     EventsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[EventsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.imageView.image = nil;
+    cell.backgroundImage.image = [UIImage imageNamed:@"blankImageCheck43"];
     cell.delegate = self;
     cell.leftUtilityButtons = [self leftButtons];
     cell.rightUtilityButtons = [self rightButtons];
 
     
     EventItem *currentEventItem = mutableEventsArray[indexPath.row];
-    NSString *titleStr = currentEventItem.title;
-    NSString *dateStr = [NSString stringWithFormat:@"Event Begins: %@", currentEventItem.dateString];
-    
-    cell.titleLabel.text = titleStr;
-    cell.dateLabel.text = dateStr;
+    [cell setItem:currentEventItem];
     
     
     NSString *imageUrlStr = currentEventItem.imgString;
@@ -130,16 +125,16 @@
 
 -(void)getEventsFromServer
 {
+    [hud show:YES];
     NSString *urlStr = @"http://davidwnorman.com/events4vets/api/getEvents.php";
-    //    NSURL *urlObj = [NSURL URLWithString:urlStr];
-    //    NSURLRequest *urlReq = [NSURLRequest requestWithURL:urlObj];
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //        NSLog(@"JSON: %@", responseObject);
-        returnedEventsArray = responseObject;
+        returnedEventsArray = [NSMutableArray arrayWithArray:responseObject];
+        
         mutableEventsArray = [NSMutableArray arrayWithCapacity:[returnedEventsArray count]];
+//        returnedEventsArray = [mutableEventsArray ];
         for (NSDictionary* event in returnedEventsArray)
         {
             EventItem *eventItem = [EventItem eventWithTitle:[event objectForKey:@"title"]];
@@ -147,17 +142,186 @@
             eventItem.imgString = [event objectForKey:@"img"];
             eventItem.price = [event objectForKey:@"price"];
             eventItem.dateString = [event objectForKey:@"date"];
+            eventItem.identifier = [event objectForKey:@"id"];
+            eventItem.score = [event objectForKey:@"votes"];
+            
             [mutableEventsArray addObject:eventItem];
         }
+        
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
         NSLog(@"returnedEventsArray count: %lu", (unsigned long)[returnedEventsArray count]);
+        [hud hide:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
         [self.refreshControl endRefreshing];
+        [hud hide:YES];
     }];
     
 }
+
+-(void)updateScoreEventOnServerWith:(NSNumber*)identifier andScoreType:(NSNumber*)scoreType andCell:(EventsTableViewCell*)cell
+{
+    NSMutableURLRequest *urlReq = [[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:@"http://davidwnorman.com/events4vets/inc/insertEvent.php"]];
+    [urlReq setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    
+    NSData *postdata = [[NSString stringWithFormat:@"event_update_score=1&event_id=%d&score_type=%d&user_id=%@",identifier.intValue, scoreType.intValue, [PFUser currentUser].email] dataUsingEncoding:NSUTF8StringEncoding];
+    [urlReq setHTTPBody: postdata];
+    [urlReq setHTTPMethod:@"POST"];
+    [NSURLConnection sendAsynchronousRequest:urlReq queue:[NSOperationQueue new] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+    {
+        NSLog(@"error: %@", connectionError);
+        NSLog(@"response: %@", response);
+        NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"data: %@", dataString);
+        NSLog(@"location: %lu", (unsigned long)[dataString rangeOfString:@"Duplicate entry"].location);
+        if ([dataString rangeOfString:@"Duplicate entry"].location == NSNotFound && [dataString rangeOfString:@"body-500"].location == NSNotFound)
+        {
+            EventItem* eventItem = mutableEventsArray[[self.tableView indexPathForCell:cell].row];
+            eventItem.score = [NSNumber numberWithInt:eventItem.score.intValue + 1];
+            mutableEventsArray[[self.tableView indexPathForCell:cell].row] = eventItem;
+            
+            cell.item = eventItem;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self animateLikeWithCell:cell];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.likeView startRemovalTimer];
+                    [self performSelector:@selector(hideTheLikeView) withObject:self afterDelay:1];
+                });
+                
+                cell.scoreLabel.text = [NSString stringWithFormat:@"BZ: %@", eventItem.score];
+                [cell setNeedsDisplay];
+            });
+        }
+        else
+        {
+         
+            [self subtractScoreOnServer:identifier andScoreType:0 andCell:cell];
+        }
+
+    }];
+}
+
+-(void)subtractScoreOnServer:(NSNumber*)identifier andScoreType:(NSNumber*)scoreType andCell:(EventsTableViewCell*)cell
+{
+    NSMutableURLRequest *urlReq = [[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:@"http://davidwnorman.com/events4vets/inc/insertEvent.php"]];
+    [urlReq setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    
+    NSData *postdata = [[NSString stringWithFormat:@"event_update_score=1&event_id=%d&score_type=%d&user_id=%@",identifier.intValue, scoreType.intValue, [PFUser currentUser].email] dataUsingEncoding:NSUTF8StringEncoding];
+    [urlReq setHTTPBody: postdata];
+    [urlReq setHTTPMethod:@"POST"];
+    [NSURLConnection sendAsynchronousRequest:urlReq queue:[NSOperationQueue new] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        NSLog(@"error: %@", connectionError);
+        NSLog(@"response: %@", response);
+        NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"data: %@", dataString);
+        NSLog(@"location: %lu", (unsigned long)[dataString rangeOfString:@"Duplicate entry"].location);
+        
+        EventItem* eventItem = mutableEventsArray[[self.tableView indexPathForCell:cell].row];
+        eventItem.score = [NSNumber numberWithInt:eventItem.score.intValue - 1];
+        mutableEventsArray[[self.tableView indexPathForCell:cell].row] = eventItem;
+
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self animateNOTLikeWithCell:cell];
+            [self.likeView startRemovalTimer];
+            [self performSelector:@selector(hideTheLikeView) withObject:self afterDelay:1];
+            cell.scoreLabel.text = [NSString stringWithFormat:@"BZ: %@", eventItem.score];
+            [cell setNeedsDisplay];
+
+        });
+
+        
+        
+    }];
+}
+
+-(void)animateLikeWithCell:(EventsTableViewCell*)cell
+{
+    counter++;
+    self.likeView = [[LikeView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
+    self.likeView.tag = counter;
+    self.likeView.center = CGPointMake(cell.center.x, cell.center.y);
+    self.likeView.translatesAutoresizingMaskIntoConstraints = YES;
+    [self.view addSubview:self.likeView];
+    
+    
+    // Animate the position from the starting Y position of 600 back up to 0
+    // which puts it back at the original position
+    JNWSpringAnimation *translate = [JNWSpringAnimation
+                                     animationWithKeyPath:@"transform.translation.y"];
+    translate.damping = 15;
+    translate.stiffness = 15;
+    translate.mass = 1;
+    translate.fromValue = @(600);
+    translate.toValue = @(0);
+    
+    [self.likeView.layer addAnimation:translate forKey:translate.keyPath];
+    self.likeView.transform = CGAffineTransformTranslate(self.likeView.transform, 0, 0);
+    
+    JNWSpringAnimation *scale = [JNWSpringAnimation
+                                 animationWithKeyPath:@"transform.scale"];
+    scale.damping = 32;
+    scale.stiffness = 450;
+    scale.mass = 2.4;
+    scale.fromValue = @(0);
+    scale.toValue = @(1.0);
+    
+    [self.likeView.layer addAnimation:scale forKey:scale.keyPath];
+    self.likeView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
+
+}
+
+-(void)animateNOTLikeWithCell:(EventsTableViewCell*)cell
+{
+    counter++;
+    self.likeView = [[LikeView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
+    self.likeView.tag = counter;
+    self.likeView.center = CGPointMake(cell.center.x, cell.center.y);
+    self.likeView.translatesAutoresizingMaskIntoConstraints = YES;
+    [self.view addSubview:self.likeView];
+    
+    
+    // Animate the position from the starting Y position of 600 back up to 0
+    // which puts it back at the original position
+    JNWSpringAnimation *translate = [JNWSpringAnimation
+                                     animationWithKeyPath:@"transform.translation.y"];
+    translate.damping = 15;
+    translate.stiffness = 15;
+    translate.mass = 1;
+    translate.fromValue = @(-100);
+    translate.toValue = @(0);
+    
+    [self.likeView.layer addAnimation:translate forKey:translate.keyPath];
+    self.likeView.transform = CGAffineTransformTranslate(self.likeView.transform, 0, 0);
+    
+    JNWSpringAnimation *scale = [JNWSpringAnimation
+                                 animationWithKeyPath:@"transform.scale"];
+    scale.damping = 32;
+    scale.stiffness = 450;
+    scale.mass = 2.4;
+    scale.fromValue = @(0);
+    scale.toValue = @(1.0);
+    
+    [self.likeView.layer addAnimation:scale forKey:scale.keyPath];
+    self.likeView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
+    
+    JNWSpringAnimation *rotate = [JNWSpringAnimation
+                                  animationWithKeyPath:@"transform.rotation"];
+    rotate.damping = 9;
+    rotate.stiffness = 9;
+    rotate.mass = 1;
+    rotate.fromValue = @(0);
+    rotate.toValue = @(M_PI);
+    
+    [self.likeView.layer addAnimation:rotate forKey:rotate.keyPath];
+    self.likeView.transform = CGAffineTransformRotate(self.likeView.transform, M_PI);
+    
+}
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -186,18 +350,10 @@
     NSMutableArray *leftUtilityButtons = [NSMutableArray new];
     
     [leftUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.07 green:0.75f blue:0.16f alpha:1.0]
-                                                icon:[UIImage imageNamed:@"check.png"]];
-    [leftUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:1.0f green:1.0f blue:0.35f alpha:1.0]
-                                                icon:[UIImage imageNamed:@"clock.png"]];
-    [leftUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:1.0f green:0.231f blue:0.188f alpha:1.0]
-                                                icon:[UIImage imageNamed:@"cross.png"]];
-    [leftUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.55f green:0.27f blue:0.07f alpha:1.0]
-                                                icon:[UIImage imageNamed:@"list.png"]];
+     [UIColor E4VGreen] icon:[UIImage imageNamed:@"thumb_up-50.png"]];
     
+    [leftUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor E4VLightOrange] icon:[UIImage imageNamed:@"upload-50.png"]];
     return leftUtilityButtons;
 }
 
@@ -220,23 +376,51 @@
     }
 }
 
-- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index
+- (void)swipeableTableViewCell:(EventsTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index
 {
     switch (index) {
         case 0:
-            NSLog(@"left button 0 was pressed");
+        {
+
+            NSLog(@"Like was pressed!");
+       
+            
+            EventItem* eventItem = mutableEventsArray[[self.tableView indexPathForCell:cell].row];
+            [self updateScoreEventOnServerWith:eventItem.identifier andScoreType:@1 andCell:cell];
+
+            
+            [cell hideUtilityButtonsAnimated:YES];
             break;
+        }
         case 1:
+        {
+            EventItem* eventItem = mutableEventsArray[[self.tableView indexPathForCell:cell].row];
+            [self shareButtonWasTappedForEvent:eventItem];
             NSLog(@"left button 1 was pressed");
+            [cell hideUtilityButtonsAnimated:YES];
+
             break;
-        case 2:
-            NSLog(@"left button 2 was pressed");
-            break;
-        case 3:
-            NSLog(@"left btton 3 was pressed");
+        }
         default:
+        {
             break;
+        }
     }
+}
+
+-(void)hideTheLikeView
+{
+    JNWSpringAnimation *scale =
+    [JNWSpringAnimation animationWithKeyPath:@"transform.scale"];
+    scale.damping = 40;
+    scale.stiffness = 540;
+    scale.mass = 1;
+    
+    scale.fromValue = @(1.0);
+    scale.toValue = @(0);
+    
+    [self.likeView.layer addAnimation:scale forKey:scale.keyPath];
+    self.likeView.transform = CGAffineTransformMakeScale(0.01, 0.01);
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
@@ -244,10 +428,7 @@
     switch (index) {
         case 0:
         {
-            NSLog(@"More button was pressed");
-            UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
-            [alertTest show];
-            
+            [self.tableView.delegate tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
             [cell hideUtilityButtonsAnimated:YES];
             break;
         }
@@ -288,6 +469,37 @@
     
     return YES;
 }
+
+- (void)shareButtonWasTappedForEvent:(EventItem*)eventItem{
+    
+    NSString *shareText;
+    
+        shareText = @"Check out this event I found via Events4Vets davidwnorman.com/events4vets";
+    
+    NSURL *shareURL = eventItem.link;
+    UIImage *shareImage = [UIImage imageNamed:@"E4VLogoOnly.png"];
+    
+    NSArray *items   = [NSArray arrayWithObjects:
+                        shareText,
+                        shareImage,
+                        shareURL, nil];
+    
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
+    [activityViewController setValue:shareText forKey:@"subject"];
+    
+//    activityViewController.excludedActivityTypes =   @[UIActivityTypeCopyToPasteboard,
+//                                                       UIActivityTypePostToWeibo,
+//                                                       UIActivityTypeSaveToCameraRoll,
+//                                                       UIActivityTypeCopyToPasteboard,
+//                                                       UIActivityTypeMessage,
+//                                                       UIActivityTypeAssignToContact,
+//                                                       UIActivityTypePrint];
+    
+    [self presentViewController:activityViewController animated:YES completion:nil];
+}
+
+
 
 
 /*
@@ -340,6 +552,8 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
+
+
 
 
 @end

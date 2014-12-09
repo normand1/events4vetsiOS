@@ -8,16 +8,20 @@
 
 #import "WalkThroughViewController.h"
 #import "GHWalkThroughView.h"
+#import "E4VLoginVC.h"
+#import "E4VSignupVC.h"
+#import "Predefined.h"
 
-static NSString * const sampleDesc1 = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt laoreet diam, id suscipit ipsum sagittis a. ";
 
-static NSString * const sampleDesc2 = @" Suspendisse et ultricies sem. Morbi libero dolor, dictum eget aliquam quis, blandit accumsan neque. Vivamus lacus justo, viverra non dolor nec, lobortis luctus risus.";
+static NSString * const sampleDesc1 = @"Events4Vets is a list of curated events for people who have proudly served in the US Military.";
 
-static NSString * const sampleDesc3 = @"In interdum scelerisque sem a convallis. Quisque vehicula a mi eu egestas. Nam semper sagittis augue, in convallis metus";
+static NSString * const sampleDesc2 = @"There are amazing events that benefit members of the armed forces all across the United States.";
 
-static NSString * const sampleDesc4 = @"Praesent ornare consectetur elit, in fringilla ipsum blandit sed. Nam elementum, sem sit amet convallis dictum, risus metus faucibus augue, nec consectetur tortor mauris ac purus.";
+static NSString * const sampleDesc3 = @"When you find event you like on Events4Vets you can give it a BRAVO ZULU so that other members can find this event easier.";
 
-static NSString * const sampleDesc5 = @"Sed rhoncus arcu nisl, in ultrices mi egestas eget. Etiam facilisis turpis eget ipsum tempus, nec ultricies dui sagittis. Quisque interdum ipsum vitae ante laoreet, id egestas ligula auctor";
+static NSString * const sampleDesc4 = @"Share events you're going to attend or events you think would be useful to others on Facebook and Twitter.";
+
+static NSString * const sampleDesc5 = @"Check back for more events and more updates often! We're working to bring you the best events and the best App for Veterans!";
 
 @interface WalkThroughViewController () <GHWalkThroughViewDataSource, GHWalkThroughViewDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
@@ -46,36 +50,45 @@ static NSString * const sampleDesc5 = @"Sed rhoncus arcu nisl, in ultrices mi eg
     // Do any additional setup after loading the view.
     
     self.navigationController.navigationBar.barStyle=UIBarStyleBlackTranslucent;
-    
+
     self.ghView.isfixedBackground = NO;
     
     self.navigationController.navigationBarHidden = YES;
     
     NSLog(@"%@", self.view);
-
-    _ghView = [[GHWalkThroughView alloc] initWithFrame:self.view.bounds];
-    [_ghView setDataSource:self];
-    [_ghView setDelegate:self];
-    [_ghView setWalkThroughDirection:GHWalkThroughViewDirectionVertical];
-    UILabel* welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 50)];
-    welcomeLabel.text = @"Events4Vets";
-    welcomeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:40];
-    welcomeLabel.textColor = [UIColor whiteColor];
-    welcomeLabel.textAlignment = NSTextAlignmentCenter;
-    self.welcomeLabel = welcomeLabel;
     
-    self.descStrings = [NSArray arrayWithObjects:sampleDesc1,sampleDesc2, sampleDesc3, sampleDesc4, sampleDesc5, nil];
-    
-    [_ghView setFloatingHeaderView:self.welcomeLabel];
-    [self.ghView setWalkThroughDirection:GHWalkThroughViewDirectionHorizontal];
+    if (![[NSUserDefaults standardUserDefaults]boolForKey:kFinishedTutorial])
+    {
 
-    [self.ghView showInView:self.view animateDuration:0.3];
+        _ghView = [[GHWalkThroughView alloc] initWithFrame:self.view.bounds];
+        [_ghView setDataSource:self];
+        [_ghView setDelegate:self];
+        [_ghView setWalkThroughDirection:GHWalkThroughViewDirectionVertical];
+        UILabel* welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 50)];
+        welcomeLabel.text = @"Events4Vets";
+        welcomeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:40];
+        welcomeLabel.textColor = [UIColor whiteColor];
+        welcomeLabel.textAlignment = NSTextAlignmentCenter;
+        self.welcomeLabel = welcomeLabel;
+        self.descStrings = [NSArray arrayWithObjects:sampleDesc1,sampleDesc2, sampleDesc3, sampleDesc4, sampleDesc5, nil];
+        
+        [_ghView setFloatingHeaderView:self.welcomeLabel];
+        [self.ghView setWalkThroughDirection:GHWalkThroughViewDirectionHorizontal];
 
-    
+        [self.ghView showInView:self.view animateDuration:0.3];
+    }
+
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = YES;
 }
 
 -(void)walkthroughDidDismissView:(GHWalkThroughView *)walkthroughView
 {
+    [[NSUserDefaults standardUserDefaults] setBool:true forKey:kFinishedTutorial];
+    
     if ([PFUser currentUser])
     {
         [self performSegueWithIdentifier:@"pushMain" sender:self];
@@ -110,14 +123,34 @@ static NSString * const sampleDesc5 = @"Sed rhoncus arcu nisl, in ultrices mi eg
 
 - (void) configurePage:(GHWalkThroughPageCell *)cell atIndex:(NSInteger)index
 {
-    cell.title = [NSString stringWithFormat:@"This is page %d", index+1];
-    cell.titleImage = [UIImage imageNamed:[NSString stringWithFormat:@"title%d", index+1]];
+    
+    switch (index) {
+        case 0:
+        cell.title = @"Gouge";
+            break;
+        case 1:
+            cell.title = @"Recco Events";
+            break;
+        case 2:
+            cell.title = @"Bravo Zulu";
+            break;
+        case 3:
+            cell.title = @"Communicate";
+            break;
+        case 4:
+            cell.title = @"We're Underway!";
+            break;
+        default:
+            break;
+    }
+    
+    cell.titleImage = [UIImage imageNamed:[NSString stringWithFormat:@"title%ld", index+1]];
     cell.desc = [self.descStrings objectAtIndex:index];
 }
 
 - (UIImage*) bgImageforPage:(NSInteger)index
 {
-    NSString* imageName =[NSString stringWithFormat:@"bg_0%d.jpg", index+1];
+    NSString* imageName =[NSString stringWithFormat:@"tutImage%ld.jpg", index+1];
     UIImage* image = [UIImage imageNamed:imageName];
     return image;
 }
@@ -128,11 +161,12 @@ static NSString * const sampleDesc5 = @"Sed rhoncus arcu nisl, in ultrices mi eg
     if (![PFUser currentUser])
     { // No user logged in
         // Create the log in view controller
-        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+        E4VLoginVC *logInViewController = [[E4VLoginVC alloc] init];
+//        logInViewController.view.backgroundColor = [UIColor blackColor];
         [logInViewController setDelegate:self]; // Set ourselves as the delegate
         
         // Create the sign up view controller
-        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+        E4VSignupVC *signUpViewController = [[E4VSignupVC alloc] init];
         [signUpViewController setDelegate:self]; // Set ourselves as the delegate
         
         // Assign our sign up controller to be displayed from the login controller

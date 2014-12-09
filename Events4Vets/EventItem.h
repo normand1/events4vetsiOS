@@ -18,6 +18,9 @@
 @property (nonatomic, strong) NSNumber *price;
 @property (nonatomic, strong) NSURL *link;
 @property (nonatomic, strong) NSString *dateString;
+@property (nonatomic, strong) NSNumber *identifier;
+@property (nonatomic, strong) NSNumber *score;
+
 
 -(id)initWithTitle:(NSString *)title;
 +(id)eventWithTitle:(NSString*)title;
